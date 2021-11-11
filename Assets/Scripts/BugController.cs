@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,10 +19,16 @@ public class BugController : MonoBehaviour
     private float velocity;
     [SerializeField] private float rotationSpeed = 10.0f;
     
+    [Header("Animation")]
+    [SerializeField]
+    private float pushAnimationTimer = 0.9f;
+    
     private Vector2 _move;
+    private bool _canMove;
     
     private readonly float MinimalMovementToRotate = 0.1f;
     private static readonly int Velocity = Animator.StringToHash("Velocity");
+    private static readonly int Push = Animator.StringToHash("Push");
 
     private void Awake()
     {
@@ -33,6 +41,17 @@ public class BugController : MonoBehaviour
         {
             playerInput = GetComponent<PlayerInput>();
         }
+    }
+
+    private void Start()
+    {
+        SetupInputCommands();
+        _canMove = true;
+    }
+
+    private void OnDestroy()
+    {
+        UnsubscribeCommands();
     }
 
     #region Player Input Methods
@@ -51,11 +70,24 @@ public class BugController : MonoBehaviour
         _move = value.Get<Vector2>();
     }
     
+    private void SetupInputCommands()
+    {
+        playerInput.actions["Push"].performed += PushCommand;
+    }
+
+    private void UnsubscribeCommands()
+    {
+        playerInput.actions["Push"].performed -= PushCommand;
+    }
+    
     #endregion
 
     private void Update()
     {
-        MovementControl();
+        if (_canMove)
+        {
+            MovementControl();    
+        }
     }
 
     private void MovementControl()
@@ -77,5 +109,18 @@ public class BugController : MonoBehaviour
         var velocityDirection = selfForward * (movementIntensity * velocity);
         characterController.Move((velocityDirection) * Time.deltaTime);
         animator.SetFloat(Velocity, movementIntensity);
+    }
+
+    private void PushCommand(InputAction.CallbackContext callback)
+    {
+        animator.SetTrigger(Push);
+        StartCoroutine(PushWaiting());
+    }
+
+    private IEnumerator PushWaiting()
+    {
+        _canMove = false;
+        yield return new WaitForSeconds(pushAnimationTimer);
+        _canMove = true;
     }
 }
