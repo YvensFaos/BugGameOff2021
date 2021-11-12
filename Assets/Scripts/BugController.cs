@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,24 +12,34 @@ public class BugController : MonoBehaviour
     private CharacterController characterController;
     [SerializeField]
     private PlayerInput playerInput;
-
     [SerializeField] private Animator animator;
     
     [Header("Properties")]
     [SerializeField]
     private float velocity;
-    [SerializeField] private float rotationSpeed = 10.0f;
+    [SerializeField]
+    private float dashDistance;
+    [SerializeField]
+    private float dashTime;
+    [SerializeField] 
+    private float rotationSpeed = 10.0f;
+
+    [Header("Checkers")]
+    [SerializeField]
+    private LayerMask dashForbiddenLayers;
     
     [Header("Animation")]
     [SerializeField]
     private float pushAnimationTimer = 0.9f;
     
     private Vector2 _move;
+    private Vector2 _dash;
     private bool _canMove;
     
     private readonly float MinimalMovementToRotate = 0.1f;
     private static readonly int Velocity = Animator.StringToHash("Velocity");
     private static readonly int Push = Animator.StringToHash("Push");
+    private static readonly int Dash = Animator.StringToHash("Dash");
 
     private void Awake()
     {
@@ -55,7 +66,7 @@ public class BugController : MonoBehaviour
     }
 
     #region Player Input Methods
-
+    
     /// <summary>
     /// Set the Vector2 values for the Move binding in the Input System.
     /// Necessary for the input system.
@@ -63,20 +74,27 @@ public class BugController : MonoBehaviour
     /// <param name="value"></param>
     public void OnMove(InputValue value)
     {
-        if (GameLogic.Logic.IsPaused())
+        if (_canMove && !GameLogic.Logic.IsPaused())
         {
-            return;
+            _move = value.Get<Vector2>();
         }
-        _move = value.Get<Vector2>();
     }
     
     private void SetupInputCommands()
     {
+        playerInput.actions["DashLeft"].performed += DashLeftCommand;
+        playerInput.actions["DashRight"].performed += DashRightCommand;
+        playerInput.actions["DashUp"].performed += DashUpCommand;
+        playerInput.actions["DashDown"].performed += DashDownCommand;
         playerInput.actions["Push"].performed += PushCommand;
     }
 
     private void UnsubscribeCommands()
     {
+        playerInput.actions["DashLeft"].performed -= DashLeftCommand;
+        playerInput.actions["DashRight"].performed -= DashRightCommand;
+        playerInput.actions["DashUp"].performed -= DashUpCommand;
+        playerInput.actions["DashDown"].performed -= DashDownCommand;
         playerInput.actions["Push"].performed -= PushCommand;
     }
     
@@ -113,8 +131,60 @@ public class BugController : MonoBehaviour
 
     private void PushCommand(InputAction.CallbackContext callback)
     {
-        animator.SetTrigger(Push);
-        StartCoroutine(PushWaiting());
+        if (_canMove && !GameLogic.Logic.IsPaused())
+        {
+            animator.SetTrigger(Push);
+            StartCoroutine(PushWaiting());
+        }
+    }
+
+    private void DashLeftCommand(InputAction.CallbackContext callback)
+    {
+        DashCommand(new Vector2(1, 0));
+    }
+    
+    private void DashRightCommand(InputAction.CallbackContext callback)
+    {
+        DashCommand(new Vector2(-1, 0));
+    }
+
+    private void DashUpCommand(InputAction.CallbackContext callback)
+    {
+        DashCommand(new Vector2(0, 1));
+    }
+    
+    private void DashDownCommand(InputAction.CallbackContext callback)
+    {
+        DashCommand(new Vector2(0, -1));
+    }
+    
+    private void DashCommand(Vector2 direction2D)
+    {
+        var direction3D = new Vector3(-direction2D.x, 0.0f, direction2D.y);
+        var selfTransform = transform;
+        var moveTo = selfTransform.position + direction3D * dashDistance;
+        if(Physics.Raycast(selfTransform.position, direction3D, out RaycastHit info, dashDistance, dashForbiddenLayers))
+        {
+            var collisionPosition = info.point;
+            var radius = characterController.radius;
+            moveTo = collisionPosition - direction3D * radius;
+        }
+        
+        var direction3DRotation = new Vector3(direction2D.x, 0.0f, direction2D.y);
+        var angle = Vector3.SignedAngle(direction3DRotation, Vector3.forward, Vector3.up);
+        var rotationQuaternion = Quaternion.Euler(0.0f, angle, 0.0f);
+        transform.rotation = rotationQuaternion;
+
+        Debug.DrawLine(selfTransform.position, moveTo, Color.red, 1.0f);
+        characterController.enabled = false;
+        _canMove = false;
+        animator.SetBool(Dash, true);
+        transform.DOMove(moveTo, dashTime).OnComplete(() =>
+        {
+            characterController.enabled = true;
+            _canMove = true;
+            animator.SetBool(Dash, false);
+        });
     }
 
     private IEnumerator PushWaiting()
@@ -122,5 +192,12 @@ public class BugController : MonoBehaviour
         _canMove = false;
         yield return new WaitForSeconds(pushAnimationTimer);
         _canMove = true;
+    }
+    
+    // Debug
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, dashDistance);
     }
 }

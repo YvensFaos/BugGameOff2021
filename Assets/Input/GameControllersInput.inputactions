@@ -6,14 +6,6 @@
             "id": "0b2f5991-4916-4581-8965-7a6552785860",
             "actions": [
                 {
-                    "name": "MousePosition",
-                    "type": "Value",
-                    "id": "77c6f3c4-a943-4ff5-8412-794feda0957c",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Move",
                     "type": "Value",
                     "id": "2102b303-c98b-4b6e-9a99-dd83224537a9",
@@ -28,57 +20,45 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DashLeft",
+                    "type": "Button",
+                    "id": "46486e21-0bd1-4a86-af95-76fc376bc072",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapTime=0.1,tapDelay=0.1)"
+                },
+                {
+                    "name": "DashRight",
+                    "type": "Button",
+                    "id": "f2a9ef9c-fa7b-4ee4-b587-1e426a292a84",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapTime=0.1,tapDelay=0.1)"
+                },
+                {
+                    "name": "DashUp",
+                    "type": "Button",
+                    "id": "89530a01-4823-48f9-a2dc-abf0ad0ffbf1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapTime=0.1,tapDelay=0.1)"
+                },
+                {
+                    "name": "DashDown",
+                    "type": "Button",
+                    "id": "04eb8405-3aea-42f5-bf40-52b01ac353b5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapTime=0.1,tapDelay=0.1)"
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "18291a14-a619-41e7-ba4c-9712424afd40",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MousePosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b828e3d7-77e7-4702-ac30-339aa7ac1e23",
-                    "path": "<Pointer>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MousePosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e3df0280-66e6-47d8-a501-aab1401c0860",
-                    "path": "<Touchscreen>/primaryTouch/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MousePosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8b73e32e-a750-4710-8309-384ee7493448",
                     "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "46b9555c-d597-4155-8903-62ad8cb45574",
-                    "path": "<Joystick>/stick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -162,9 +142,114 @@
                     "action": "Push",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2180c3c-8648-4824-9377-6270759eca2b",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3899cdf3-1fc4-4926-b48d-5dcc0dcc6474",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0676bf12-3f2e-40f2-bfd8-452a7692b906",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84c72d70-e799-41be-9046-2779a64e87a5",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4faed3cf-d640-4641-bbf9-ec8a4407fdbf",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcdd2071-5273-48b9-a720-8dbee9b2e54a",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56542ca7-f5d6-4ffe-a0aa-aeb6c423a010",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1ffe8e8-28fb-4273-877a-f6cae3a69877",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DashDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Control Scheme",
+            "bindingGroup": "Control Scheme",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
