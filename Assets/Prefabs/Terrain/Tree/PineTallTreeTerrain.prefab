@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3584884539870246471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6023530373495189179}
+  - component: {fileID: 6633337821281218322}
+  m_Layer: 6
+  m_Name: PineTallTreeTerrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &6023530373495189179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584884539870246471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7088341898691482042}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &6633337821281218322
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3584884539870246471}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 1.0377494, z: 0}
+  m_Size: 2.0754988
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8220746874485336789}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers: []
+  - screenRelativeHeight: 0.0060587535
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 8220746874485336789}
+  m_Enabled: 1
+--- !u!1001 &5921380071794879883
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6023530373495189179}
+    m_Modifications:
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267721429067196043, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+      propertyPath: m_Name
+      value: tree_terrainPineTall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+--- !u!4 &7088341898691482042 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3490903976787786801, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+  m_PrefabInstance: {fileID: 5921380071794879883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8220746874485336789 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2321889794980890462, guid: da6ffd503dac449b3bc8da74aecb2614, type: 3}
+  m_PrefabInstance: {fileID: 5921380071794879883}
+  m_PrefabAsset: {fileID: 0}
