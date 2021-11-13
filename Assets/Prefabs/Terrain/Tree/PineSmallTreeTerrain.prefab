@@ -115,6 +115,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b85c3647a884780a026baed0439f4d, type: 3}
+--- !u!1 &7695317164371145786 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5685154539512204679, guid: 79b85c3647a884780a026baed0439f4d, type: 3}
+  m_PrefabInstance: {fileID: 2607298166078175677}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7025776617863425664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5021066367531702077, guid: 79b85c3647a884780a026baed0439f4d, type: 3}
@@ -125,3 +130,17 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6189429809986972754, guid: 79b85c3647a884780a026baed0439f4d, type: 3}
   m_PrefabInstance: {fileID: 2607298166078175677}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &5248668298245683578
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7695317164371145786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.39194998
+  m_Height: 2.0172439
+  m_Direction: 1
+  m_Center: {x: 0.021479696, y: 1.0086219, z: 0.0065735877}
