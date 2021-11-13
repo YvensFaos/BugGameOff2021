@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Art" t="Include">
           <e p="Kenney" t="Include">
+            <e p="input-prompts-pixel-16" t="Include">
+              <e p="License.txt" t="Include" />
+              <e p="Tilesheet.txt" t="Include" />
+            </e>
             <e p="kenney_natureKit_2.1" t="Include">
               <e p="License.txt" t="Include" />
             </e>
@@ -34,7 +39,20 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="BugController.cs" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="MoveEventEditor.cs" t="Include" />
+          </e>
           <e p="GameLogic.cs" t="Include" />
+          <e p="MoveEvent.cs" t="Include" />
+          <e p="PushableObject.cs" t="Include" />
+          <e p="TriggerOnCollision.cs" t="Include" />
+          <e p="Utils" t="Include">
+            <e p="ApplicationQuit.cs" t="Include" />
+            <e p="AudioSlider.cs" t="Include" />
+            <e p="FPSCounter.cs" t="Include" />
+            <e p="MixerAudioSlider.cs" t="Include" />
+            <e p="RemoveMyRenderer.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="BugGameOff.sln" t="IncludeFlat" />

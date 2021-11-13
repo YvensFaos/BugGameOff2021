@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
@@ -12,7 +11,8 @@ public class BugController : MonoBehaviour
     private CharacterController characterController;
     [SerializeField]
     private PlayerInput playerInput;
-    [SerializeField] private Animator animator;
+    [SerializeField] 
+    private Animator animator;
     
     [Header("Properties")]
     [SerializeField]
@@ -21,12 +21,20 @@ public class BugController : MonoBehaviour
     private float dashDistance;
     [SerializeField]
     private float dashTime;
-    [SerializeField] 
+    [SerializeField]
     private float rotationSpeed = 10.0f;
+    [SerializeField]
+    private Transform pushPositionChecker;
+    [SerializeField]
+    private float pushCheckDistance;
+    [SerializeField]
+    private float pushForce;
 
     [Header("Checkers")]
     [SerializeField]
     private LayerMask dashForbiddenLayers;
+    [SerializeField]
+    private LayerMask pushCheckLayers;
     
     [Header("Animation")]
     [SerializeField]
@@ -190,6 +198,21 @@ public class BugController : MonoBehaviour
     private IEnumerator PushWaiting()
     {
         _canMove = false;
+        var selfTransform = transform;
+        if(Physics.Raycast(pushPositionChecker.position, selfTransform.forward, out RaycastHit info, pushCheckDistance, pushCheckLayers))
+        {
+            var push = info.collider.gameObject;
+            if(push.TryGetComponent<PushableObject>(out var pushableObject))
+            {
+                var direction = (info.point - selfTransform.position).normalized;
+                var dotForward = Vector3.Dot(direction, Vector3.forward);
+                var dotRight = Vector3.Dot(direction, Vector3.right);
+
+                direction = dotForward > dotRight ? Vector3.forward : Vector3.right;
+                pushableObject.Push(direction, pushForce);
+            }
+        }
+        
         yield return new WaitForSeconds(pushAnimationTimer);
         _canMove = true;
     }

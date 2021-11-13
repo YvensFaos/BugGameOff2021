@@ -37,15 +37,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - ExtraEffectFactor: -0.4
+    - ExtraEffectFactor: -1.27
     - ExtraEffectSaturation: 0.7
     - Lerp: 0
     - LerpRegular: 0
     - LerpSaturation: 0
-    - Noise: 0
+    - Noise: 0.417
     - NoiseFactor: 200
     - NoiseSize: 200
-    - PowerTo: 1
-    - Step: 0.001
+    - PowerTo: 0.14
+    - Step: 0.59
     m_Colors: []
   m_BuildTextureStacks: []
