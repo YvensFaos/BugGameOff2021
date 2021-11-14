@@ -919,7 +919,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4891,8 +4891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefa661b684ec4327b0b33c68c7e6087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAmount: 3
-  time: 1
+  forceMode: 0
 --- !u!1 &5893770509457197928
 GameObject:
   m_ObjectHideFlags: 0
