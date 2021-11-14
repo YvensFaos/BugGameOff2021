@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using DG.Tweening;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
