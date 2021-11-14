@@ -246,5 +246,7 @@ public class BugController : MonoBehaviour
     {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, dashDistance);
+        
+        Gizmos.DrawRay(pushPositionChecker.position, Vector3.forward * pushCheckDistance);
     }
 }
