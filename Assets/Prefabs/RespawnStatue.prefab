@@ -154,7 +154,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireParticle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 457757190090837889, guid: e382134ff9b2f4c71bc547d28cf57b90, type: 3}
+    - {fileID: 457757190090837888, guid: e382134ff9b2f4c71bc547d28cf57b90, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e382134ff9b2f4c71bc547d28cf57b90, type: 3}
 --- !u!4 &3148775688241944519 stripped
 Transform:
