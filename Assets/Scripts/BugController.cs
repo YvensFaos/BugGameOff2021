@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using DG.Tweening;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -116,6 +118,19 @@ public class BugController : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        ForceStayingInGroundLevel();
+    }
+
+    private void ForceStayingInGroundLevel()
+    {
+        var transform1 = transform;
+        var position = transform1.position;
+        position.y = 0.0f;
+        transform1.position = position;
+    }
+
     private void MovementControl()
     {
         var selfTransform = transform;
@@ -131,9 +146,11 @@ public class BugController : MonoBehaviour
                 rotationSpeed * Time.deltaTime);
         }
 
+        var gravity = Vector3.down * 10.0f;
+
         var selfForward = selfTransform.forward;
         var velocityDirection = selfForward * (movementIntensity * velocity);
-        characterController.Move((velocityDirection) * Time.deltaTime);
+        characterController.Move((velocityDirection + gravity) * Time.deltaTime);
         animator.SetFloat(Velocity, movementIntensity);
     }
 
@@ -146,6 +163,7 @@ public class BugController : MonoBehaviour
         }
     }
 
+    #region Dash Functions
     private void DashLeftCommand(InputAction.CallbackContext callback)
     {
         DashCommand(new Vector2(1, 0));
@@ -194,29 +212,35 @@ public class BugController : MonoBehaviour
             animator.SetBool(Dash, false);
         });
     }
+    #endregion
 
     private IEnumerator PushWaiting()
     {
         _canMove = false;
-        var selfTransform = transform;
-        if(Physics.Raycast(pushPositionChecker.position, selfTransform.forward, out RaycastHit info, pushCheckDistance, pushCheckLayers))
-        {
-            var push = info.collider.gameObject;
-            if(push.TryGetComponent<PushableObject>(out var pushableObject))
-            {
-                var direction = (info.point - selfTransform.position).normalized;
-                var dotForward = Vector3.Dot(direction, Vector3.forward);
-                var dotRight = Vector3.Dot(direction, Vector3.right);
-
-                direction = dotForward > dotRight ? Vector3.forward : Vector3.right;
-                pushableObject.Push(direction, pushForce);
-            }
-        }
-        
+        //PushForce(); called by the animation
         yield return new WaitForSeconds(pushAnimationTimer);
         _canMove = true;
     }
-    
+
+    /// <summary>
+    /// Being called bu the animation
+    /// </summary>
+    public void PushForce()
+    {
+        Debug.Log("Called!");
+        var selfTransform = transform;
+        if (Physics.Raycast(pushPositionChecker.position, selfTransform.forward, out RaycastHit info, pushCheckDistance,
+            pushCheckLayers))
+        {
+            var push = info.collider.gameObject;
+            if (push.TryGetComponent<PushableObject>(out var pushableObject))
+            {
+                var forw = selfTransform.forward;
+                pushableObject.Push(forw, pushForce);
+            }
+        }
+    }
+
     // Debug
     private void OnDrawGizmos()
     {
