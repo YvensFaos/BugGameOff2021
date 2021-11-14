@@ -12,7 +12,13 @@
               <e p="License.txt" t="Include" />
               <e p="Tilesheet.txt" t="Include" />
             </e>
+            <e p="kenney_foliagesprites" t="Include">
+              <e p="License.txt" t="Include" />
+            </e>
             <e p="kenney_natureKit_2.1" t="Include">
+              <e p="License.txt" t="Include" />
+            </e>
+            <e p="smokeparticleassets" t="Include">
               <e p="License.txt" t="Include" />
             </e>
             <e p="survival-kit-1.0" t="Include">
@@ -44,7 +50,10 @@
           </e>
           <e p="GameLogic.cs" t="Include" />
           <e p="MoveEvent.cs" t="Include" />
+          <e p="PostProcessManager.cs" t="Include" />
           <e p="PushableObject.cs" t="Include" />
+          <e p="RespawnPoint.cs" t="Include" />
+          <e p="StartRespawnPoint.cs" t="Include" />
           <e p="TriggerOnCollision.cs" t="Include" />
           <e p="Utils" t="Include">
             <e p="ApplicationQuit.cs" t="Include" />

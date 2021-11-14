@@ -5,9 +5,11 @@ public class GameLogic : MonoBehaviour
     private static GameLogic _logic;
     public static GameLogic Logic => _logic;
 
-    private Camera currentCamera;
+    private Camera _currentCamera;
+    private Vector3 _currentRespawnPosition;
 
-    [Header("Components")]
+    [Header("Components")] 
+    private PostProcessManager postProcessManager;
     
     [Header("Properties")] 
     [SerializeField]
@@ -33,11 +35,23 @@ public class GameLogic : MonoBehaviour
 
     public void SetCamera(Camera newCamera)
     {
-        currentCamera = newCamera;
+        _currentCamera = newCamera;
+    }
+
+    public void SetPostProcessManager(PostProcessManager manager)
+    {
+        postProcessManager = manager;
+    }
+
+    public void SetRespawnPoint(Vector3 respawnPoint)
+    {
+        _currentRespawnPosition = respawnPoint;
     }
 
     public void Pause() => pause = true;
     public bool IsPaused() => pause;
 
-    public Camera CurrentCamera => currentCamera;
+    public Camera CurrentCamera => _currentCamera;
+    public PostProcessManager PostProcessManager => postProcessManager;
+    public Vector3 CurrentRespawnPosition => _currentRespawnPosition;
 }
