@@ -66,6 +66,7 @@
       <Path>.idea</Path>
       <Path>Builds</Path>
       <Path>Library</Path>
+      <Path>Log Profiler</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>
       <Path>UserSettings</Path>

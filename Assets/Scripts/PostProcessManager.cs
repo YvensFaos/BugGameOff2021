@@ -10,6 +10,8 @@ public class PostProcessManager : MonoBehaviour
     private Material standardMaterial;
     [SerializeField]
     private Material deadMaterial;
+    [SerializeField]
+    private Material cyberSpaceMaterial;
     [SerializeField] 
     private float deadTimer;
     [SerializeField]
@@ -23,14 +25,24 @@ public class PostProcessManager : MonoBehaviour
 
     public void TransitionToDeadState()
     {
+        TransitionFromTo(postProcessMaterial, deadMaterial);
+    }
+    
+    public void TransitionToCyberSpace()
+    {
+       TransitionFromTo(postProcessMaterial, cyberSpaceMaterial);
+    }
+
+    private void TransitionFromTo(Material from, Material to)
+    {
         var interloper = 0.0f;
         DOTween.To(() => interloper, value =>
         {
             interloper = value;
-            rawRenderer.material.Lerp(postProcessMaterial, deadMaterial, interloper);
+            rawRenderer.material.Lerp(from, to, interloper);
         }, 1.0f, deadTimer);
     }
-
+    
     public void TransitionToRegularState()
     {
         var interloper = 0.0f;

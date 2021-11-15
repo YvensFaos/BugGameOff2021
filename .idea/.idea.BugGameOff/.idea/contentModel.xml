@@ -45,6 +45,8 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="BugController.cs" t="Include" />
+          <e p="CollectibleGrouper.cs" t="Include" />
+          <e p="CollectibleSphere.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="MoveEventEditor.cs" t="Include" />
           </e>

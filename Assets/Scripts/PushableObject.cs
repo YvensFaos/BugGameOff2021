@@ -22,14 +22,17 @@ public class PushableObject : MonoBehaviour
         if (_push)
         {
             _push = false;
-            _selfRigidBody.AddForce(_pushDirection * (_force * Time.deltaTime), forceMode);
+            _selfRigidBody.AddForce(_pushDirection * _force, forceMode);
         }
     }
 
     public void Push(Vector3 pushDirection, float force)
     {
-        _pushDirection = pushDirection;
-        _force = force;
-        _push = true;
+        if (!_push)
+        {
+            _pushDirection = pushDirection;
+            _force = force;
+            _push = true;
+        }
     }
 }

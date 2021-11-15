@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class GameLogic : MonoBehaviour
     public void SetRespawnPoint(Vector3 respawnPoint)
     {
         _currentRespawnPosition = respawnPoint;
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Pause() => pause = true;
